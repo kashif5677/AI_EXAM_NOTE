@@ -1,5 +1,6 @@
 import React from 'react'
 import {motion} from 'framer-motion'
+import { FcGoogle } from "react-icons/fc";
 
 function Auth() {
   return (
@@ -25,11 +26,26 @@ function Auth() {
       </motion.header>
       <main className='max-w-6xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-20 '>
 
-        {/* left */}
+        {/* left content*/}
+        <motion.div
+        initial={{x:-60,opacity:0}}
+        animate={{y:0,opacity:1}}
+        transition={{duration:1.5}}
+        >
+        <h1 className='text-5xl lg:text-6xl font-extrabold leading-tight bg-gradient-to-br from-black/90 via-black/60 to-black/90 bg-clip-text text-transparent'>
+        Unlock Smart <br /> AI Notes
+        </h1>
+        <motion.button
+            className='mt-10 px-10 py-3 rounded-xl flex items-center gap-3 bg-gradient-to-br from-black/90 via-black/80 to-black/90 border border-white/10 text-white font-semibold text-lg shadow-[0_25px_60px_rgba(0,0,0,0.7)]'
+        >
+            <FcGoogle/>
+        </motion.button>
 
-        {/* Right */}
-        
+        </motion.div>
+        {/* Right content */}
+        <motion.div>
 
+        </motion.div>
       </main>
     </div>
   )
