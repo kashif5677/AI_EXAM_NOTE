@@ -56,8 +56,11 @@ function Auth() {
 
         </motion.div>
         {/* Right content */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
-            <Feature icon="🎁" title="50 Free Credits" desc="Start with 50 credits to generate notes without paying."/>
+        <div className='grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 gap-8'>
+            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
+            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
+            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
+            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
         </div>
 
       </main>
@@ -69,7 +72,7 @@ function Feature({icon,title,des}){
     <motion.div
     whileHover={{y:-12,rotateX:8,rotateY:-8,scale:1.07}}
     transition={{type:"spring",stiffness:200,damping:18}}
-    className='relative rounded-2xl p-6 bg-gradient-to-br from-black/90 via-black/80 to-black/90 backdrop-blur-2xl border border-white/10 shadow-[0_30px_80px_rbga(0,0,0,0.7)]
+    className='relative rounded-2xl p-8 bg-gradient-to-br from-black/90 via-black/80 to-black/90 backdrop-blur-2xl border border-white/10 shadow-[0_30px_80px_rbga(0,0,0,0.7)]
     text-white' 
       style={{transformStyle:"preserve-3d"}}
     >
