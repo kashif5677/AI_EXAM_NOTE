@@ -56,11 +56,12 @@ function Auth() {
 
         </motion.div>
         {/* Right content */}
-        <motion.div>
-
+        <motion.div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+            <Feature icon="🎁" title="50 Free Credits" desc="Start with 50 credits to generate notes without paying."/>
         </motion.div>
+
       </main>
-    </div>
+    </div>  
   )
 }
 function Feature({icon,title,des}){
