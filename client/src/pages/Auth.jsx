@@ -73,12 +73,12 @@ function Feature({icon,title,des}){
     text-white' 
       style={{transformStyle:"preserve-3d"}}
     >
-      <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity pointer-events-none'>
+      <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity pointer-events-none'/>
           <div className='relative z-10' style={{transform:"translateZ(30px)"}}>
             <div className='text-4xl mb-3'>{icon}</div>
             <h3 className='text-lg font-semibold mb-2'>{title}</h3>
             <p className='text-gray-300 text-sm leading-relaxed'>{des}</p>
-          </div>
+          
       </div>
     </motion.div>
   )
