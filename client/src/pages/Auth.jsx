@@ -1,8 +1,20 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 import { FcGoogle } from "react-icons/fc";
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../utlis/firebase.js';
 
 function Auth() {
+
+  const handleGoogleAuth=async()=>{
+    try {
+      const response=await signInWithPopup(auth,provider)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className='min-h-screen overflow-hidden bg-white text-black px-8 '>
       <motion.header
@@ -36,6 +48,7 @@ function Auth() {
         Unlock Smart <br /> AI Notes
         </h1>
         <motion.button
+            onClick={handleGoogleAuth}
             whileHover={{
                 y:-10,
                 rotateX:8,
@@ -58,9 +71,9 @@ function Auth() {
         {/* Right content */}
         <div className='grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 gap-8'>
             <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
-            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
-            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
-            <Feature icon="🎁" title="50 Free Credits" des="Start with 50 credits to generate notes without paying."/>
+            <Feature icon="📝" title="Exam Notes" des="High-yield,revision-ready."/>
+            <Feature icon="📂" title="Project Notes" des="Well-Stuctured documentation for assignments & Projects."/>
+            <Feature icon="⬇️" title="Download PDF" des="Download notes in PDF format."/>
         </div>
 
       </main>
