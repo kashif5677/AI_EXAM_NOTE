@@ -1,19 +1,34 @@
-import React from 'react'
-import {motion} from 'framer-motion'
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../utlis/firebase.js';
+import axios from 'axios';
+import { serverUrl } from '../App.jsx';
 
 function Auth() {
 
-  const handleGoogleAuth=async()=>{
+  const handleGoogleAuth = async () => {
     try {
-      const response=await signInWithPopup(auth,provider)
-      console.log(response)
-    } catch (error) {
-      console.log(error)
+      const response = await signInWithPopup(auth, provider);
+      const User = response.user;
+      const name = User.displayName;
+      const email = User.email;
+     
+const result = await axios.post(
+  serverUrl + "/api/auth/google",
+  { name, email },
+  { withCredentials: true }
+);   
+      console.log(result);
+
+    } catch (err) {
+      console.error(err);
+        console.log(err.response?.status);   // status code
+  console.log(err.response?.data);     // server error message
+  console.log(err.message);   
     }
-  }
+  };
 
   return (
     <div className='min-h-screen overflow-hidden bg-white text-black px-8 '>
@@ -36,7 +51,7 @@ function Auth() {
         </p>
 
       </motion.header>
-      <main className='max-w-6xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-2 gap-20 '>
+      <main className='max-w-6xl mx-auto p-10 py-10 grid grid-cols-1 lg:grid-cols-2 gap-20 '>
 
         {/* left content*/}
         <motion.div
@@ -45,22 +60,24 @@ function Auth() {
         transition={{duration:1.5}}
         >
         <h1 className='text-5xl lg:text-6xl font-extrabold leading-tight bg-gradient-to-br from-black/90 via-black/60 to-black/90 bg-clip-text text-transparent'>
-        Unlock Smart <br /> AI Notes
+          Unlock Smart <br /> AI Notes
         </h1>
+      
         <motion.button
-            onClick={handleGoogleAuth}
-            whileHover={{
-                y:-10,
-                rotateX:8,
-                rotateY:-8,
-                scale:1.07
-            }} 
-            whileTap={{scale:0.97}}
-            transition={{type:"spring",stiffness:200,damping:18}}
-            className='mt-10 px-10 py-3 rounded-xl flex items-center gap-3 bg-gradient-to-br from-black/90 via-black/80 to-black/90 border border-white/10 text-white font-semibold text-lg shadow-[0_25px_60px_rgba(0,0,0,0.7)]'
+          onClick={handleGoogleAuth}
+      
+          whileHover={{
+            y: -10,
+            rotateX: 8,
+            rotateY: -8,
+            scale: 1.07
+          }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          className='mt-10 px-10 py-3 rounded-xl flex items-center gap-3 bg-gradient-to-br from-black/90 via-black/80 to-black/90 border border-white/10 text-white font-semibold text-lg shadow-[0_25px_60px_rgba(0,0,0,0.7)] disabled:opacity-50 disabled:cursor-not-allowed'
         >
-            <FcGoogle size={22}/>
-            Continue with Google
+          <FcGoogle size={22} />
+          {'Continue with Google'}
         </motion.button>
         <p className='mt-6 max-w-xl text-lg bg-gradient-to-br from-gray-700 via-gray-500/80 to-gray-700 bg-clip-text text-transparent'>
             You get <span className='font-semibold'>50 Free credits</span> to create exam notes,project notes,charts,graphs and download clean PDFs - instantly using AI.
