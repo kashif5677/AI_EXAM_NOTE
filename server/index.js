@@ -6,9 +6,11 @@ import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
 dotenv.config()
+import userRouter from "./routes/user.routes.js";
+
 const app = express()
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(
@@ -24,7 +26,9 @@ app.get('/', (req, res) => {
     res.json({ message: 'Hello World!' })
 })
 
+//routes   
 app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
 
 app.listen(port, () => {
     connectDB()

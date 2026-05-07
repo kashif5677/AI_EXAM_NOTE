@@ -20,7 +20,7 @@ const result = await axios.post(
   { name, email },
   { withCredentials: true }
 );   
-      console.log(result);
+      console.log(result.data);
 
     } catch (err) {
       console.error(err);
