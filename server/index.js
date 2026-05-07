@@ -5,14 +5,11 @@ import connectDB from "./utlis/connectDB.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
-dotenv.config()
 import userRouter from "./routes/user.routes.js";
+dotenv.config()
 
 const app = express()
 
-const port = process.env.PORT || 3000
-app.use(express.json())
-app.use(cookieParser())
 app.use(cors(
     {
         origin: 'http://localhost:5173',
@@ -21,7 +18,9 @@ app.use(cors(
     }
 ))
 
-
+app.use(express.json())
+app.use(cookieParser())
+const port = process.env.PORT || 3000
 app.get('/', (req, res) => {
     res.json({ message: 'Hello World!' })
 })
