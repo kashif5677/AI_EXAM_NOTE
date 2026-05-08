@@ -8,7 +8,7 @@ export const serverUrl = ""
 
 function App() {
   useEffect(() => {
-    // getCurrentUser()
+    getCurrentUser()
   },[])
  
   return (
