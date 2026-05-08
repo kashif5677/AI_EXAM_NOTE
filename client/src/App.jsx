@@ -4,7 +4,7 @@ import Auth from "./pages/Auth"
 import { useEffect } from "react"
 import { getCurrentUser } from "./services/api"
 
-export const serverUrl = "http://localhost:8000"
+export const serverUrl = ""
 
 function App() {
   useEffect(() => {

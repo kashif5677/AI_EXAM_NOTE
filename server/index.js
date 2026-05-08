@@ -1,6 +1,5 @@
 ﻿import express from "express";
 import dotenv from "dotenv"
-import { connect } from "mongoose";
 import connectDB from "./utlis/connectDB.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";

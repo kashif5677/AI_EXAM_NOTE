@@ -4,7 +4,6 @@ import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../utlis/firebase.js';
 import axios from 'axios';
-import { serverUrl } from '../App.jsx';
 
 function Auth() {
 
@@ -15,11 +14,11 @@ function Auth() {
       const name = User.displayName;
       const email = User.email;
      
-const result = await axios.post(
-  serverUrl + "/api/auth/google",
-  { name, email },
-  { withCredentials: true }
-);   
+ const result = await axios.post(
+   "/api/auth/google",
+   { name, email },
+   { withCredentials: true }
+ );
       console.log(result.data);
 
     } catch (err) {

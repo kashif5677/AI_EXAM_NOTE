@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 
 const isAuth = async (req, res, next) => {
     try {
-        console.log("cookies",req.cookies);
+
         let { token } = req.cookies
 
         if (!token) {
@@ -11,7 +11,7 @@ const isAuth = async (req, res, next) => {
 
         let verifyToken = await jwt.verify(token, process.env.JWT_SECRET)
         if (!verifyToken) {
-            return res.status(401).json({ message: "unauthorized" })
+            return res.status(401).json({ message: " server unauthorized" })
         }
         req.userId = verifyToken.userId
         next()
