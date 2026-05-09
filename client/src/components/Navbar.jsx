@@ -41,7 +41,7 @@ function Navbar() {
                         <motion.span
                         whileHover={{scale:1.2}}
                         whileTap={{scale:0.97}}
-                        className='ml-2 h-5 flex items-center justify-center rounded-full bg-white text-black text-xs font-bold'
+                        className='ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-white text-black text-xs font-bold'
                         >
                             ➕
                         </motion.span>
