@@ -39,7 +39,7 @@ function Navbar() {
                         <span className='text-xl '>💠</span>
                         <span>{credits}</span>
                         <motion.span
-                        whileHover={{scale:1.07}}
+                        whileHover={{scale:1.2}}
                         whileTap={{scale:0.97}}
                         className='ml-2 h-5 flex items-center justify-center rounded-full bg-white text-black text-xs font-bold'
                         >
