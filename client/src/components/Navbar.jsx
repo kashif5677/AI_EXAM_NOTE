@@ -93,7 +93,7 @@ function Navbar() {
                      <motion.div 
                      initial={{opacity:0,y:-10,scale:0.95}}
                      animate={{opacity:1,y:10,scale:1}}
-                     exit={{opacity:0,y:-10,scale:0.95}}
+                    //  exit={{opacity:0,y:-10,scale:0.95}}git add
                      transition={{duration:0.5}}
                      className='absolute right-0 mt-4 w-64 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 
                      shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
