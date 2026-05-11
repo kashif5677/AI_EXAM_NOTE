@@ -1,5 +1,5 @@
 import React from 'react'
-import {motion} from 'motion/react'
+import {AnimatePresence, motion} from 'motion/react'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
@@ -7,6 +7,7 @@ function Navbar() {
     const {userData}=useSelector(state=>state.user)
     const credits=userData.credits
     const [showCredits, setShowCredits] = useState(false)
+    const [showProfile, setShowProfile] = useState(false)
   return (
     <motion.div 
     initial={{y:-15,opacity:0}}
@@ -28,7 +29,9 @@ function Navbar() {
             </div>
             {/*right*/}
             <div className='flex itmes-center gap-6 relative '>
+            <div className='relative'>
                 <motion.div 
+                onClick={()=>{setShowCredits(!showCredits);setShowProfile(false)}}
                 whileHover={{scale:1.07}}
                 whileTap={{scale:0.97}}
                 className='flex items-center gap-1 
@@ -47,12 +50,79 @@ function Navbar() {
                         >
                             ➕
                         </motion.span>
+                    </motion.div>
+                    <AnimatePresence>
+                    {showCredits &&
+
+                     <motion.div 
+                     initial={{opacity:0,y:-10,scale:0.95}}
+                     animate={{opacity:1,y:10,scale:1}}
+                     exit={{opacity:0,y:-10,scale:0.95}}
+                     transition={{duration:0.5}}
+                     className='absolute right-[-50px] mt-4 w-64 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 
+                     shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
+                     >
+                        <h4 className='font-semibold mb-2'>Buy Credits</h4>
+                        <p className=''>Use credits to geneate AI Notes,diagram & PDFs</p>
+                        <button 
+                        onClick={()=>setShowCredits(false)}
+                        className='w-full py-2 rounded-lg bg-gradient-to-br from-white to-gray-200 text-black font-semibold hover:opacity-90'>Buy More credits</button>
+                    </motion.div>
+                    }
+                    </AnimatePresence>
+                </div>
+
+                   <div className='relative'>
+                <motion.div 
+                onClick={()=>{setShowProfile(!showProfile);setShowCredits(false)}}
+                whileHover={{scale:1.07}}
+                whileTap={{scale:0.97}}
+                className='flex items-center gap-1 
+                    px-4 py-2 rounded-full
+                    bg-white/10
+                    border border-white/20
+                    text-white text-sm
+                    shadow-md
+                    cursor-pointer'>
+                        <span className='text-md'>{userData?.name.slice(0,2).toUpperCase()}</span>
+                     
+                    </motion.div>
+                <AnimatePresence>
+                    {showProfile &&
+
+                     <motion.div 
+                     initial={{opacity:0,y:-10,scale:0.95}}
+                     animate={{opacity:1,y:10,scale:1}}
+                     exit={{opacity:0,y:-10,scale:0.95}}
+                     transition={{duration:0.5}}
+                     className='absolute right-0 mt-4 w-64 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 
+                     shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
+                     >
+                        <MenuItem text="History" onclick={()=>setShowProfile(false)}/>
+                        <div className='h-px bg-white/10 mx-3 ' />
+                        <MenuItem text="sign out" red/>
 
                     </motion.div>
+                    }
+                 </AnimatePresence>
+                </div>
             </div>
       
     </motion.div>
   )
+}
+
+function MenuItem({onclick,text,red}){
+    return(
+        <div className={`
+        w-full text-left px-5 py-3 text-sm
+        transition-colors ${
+            red ? "hover:bg-red-600" : "hover:bg-white/10"
+        }
+        `}>
+
+        </div>
+    )
 }
 
 export default Navbar
