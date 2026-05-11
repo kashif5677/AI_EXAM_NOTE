@@ -1,10 +1,12 @@
 import React from 'react'
 import {motion} from 'motion/react'
 import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 function Navbar() {
     const {userData}=useSelector(state=>state.user)
     const credits=userData.credits
+    const [showCredits, setShowCredits] = useState(false)
   return (
     <motion.div 
     initial={{y:-15,opacity:0}}
