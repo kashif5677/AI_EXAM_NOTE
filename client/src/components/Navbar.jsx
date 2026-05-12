@@ -2,12 +2,28 @@ import React from 'react'
 import {AnimatePresence, motion} from 'motion/react'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import { serverUrl } from '../App'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/userSlice'
+import  {useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Navbar() {
     const {userData}=useSelector(state=>state.user)
     const credits=userData.credits
     const [showCredits, setShowCredits] = useState(false)
     const [showProfile, setShowProfile] = useState(false)
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
+    const handleSignOut=async()=>{
+        try{
+            await axios.get(serverUrl+"/api/auth/logout",{withCredentials:true})
+            dispatch(setUserData(null))
+            navigate("/auth")
+        }catch(err){
+            console.log(err)
+        }
+    }
   return (
     <motion.div 
     initial={{y:-15,opacity:0}}
@@ -41,7 +57,7 @@ function Navbar() {
                     text-white text-sm
                     shadow-md
                     cursor-pointer'>
-                        <span className='text-xl '>💠</span>
+                        <span className='text-xl'>💠</span>
                         <span>{credits}</span>
                         <motion.span
                         whileHover={{scale:1.2}}
@@ -93,14 +109,14 @@ function Navbar() {
                      <motion.div 
                      initial={{opacity:0,y:-10,scale:0.95}}
                      animate={{opacity:1,y:10,scale:1}}
-                    //  exit={{opacity:0,y:-10,scale:0.95}}git add
+                     exit={{opacity:0,y:-10,scale:0.95}}
                      transition={{duration:0.5}}
                      className='absolute right-0 mt-4 w-64 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 
                      shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
                      >
-                        <MenuItem text="History" onclick={()=>setShowProfile(false)}/>
-                        <div className='h-px bg-white/10 mx-3 ' />
-                        <MenuItem text="sign out" red/>
+                        <MenuItem text="History" onClick={()=>setShowProfile(false)}/>
+                        <div className='h-px bg-white/10 mx-3'/>
+                        <MenuItem text="sign out" red onClick={handleSignOut}/>
 
                     </motion.div>
                     }
@@ -112,15 +128,18 @@ function Navbar() {
   )
 }
 
-function MenuItem({onclick,text,red}){
+function MenuItem({onClick,text,red}){
     return(
-        <div className={`
-        w-full text-left px-5 py-3 text-sm
+        <div
+        onClick={onClick}
+        className={`
+        w-full text-left px-5 py-3 text-sm rounded-lg
         transition-colors ${
-            red ? "hover:bg-red-600" : "hover:bg-white/10"
+            red ? "text-red-400 hover:bg-red-500/20" 
+            : "text-gray-200 hover:bg-white/10"
         }
         `}>
-
+            {text}
         </div>
     )
 }

@@ -4,8 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../utlis/firebase.js';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/userSlice';
 
 function Auth() {
+  const dispatch=useDispatch()
 
   const handleGoogleAuth = async () => {
     try {
@@ -19,7 +22,7 @@ function Auth() {
    { name, email },
    { withCredentials: true }
  );
-      console.log(result.data);
+    dispatch(setUserData(result.data))
 
     } catch (err) {
       console.error(err);
