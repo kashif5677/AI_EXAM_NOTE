@@ -76,7 +76,7 @@ function Home() {
       </section>
     
       {/*bottom*/}
-      {/* <section></section> */}
+      <section></section>
     </div>
   )
 }
