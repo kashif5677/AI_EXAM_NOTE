@@ -42,10 +42,37 @@ function Home() {
               Generate AI notes in seconds with our easy-to-use tool. Simply
 
             </motion.p>
+                    <motion.button
+                      whileHover={{
+                        y: -10,
+                        rotateX: 8,
+                        rotateY: -8,
+                        scale: 1.07
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                      className='mt-10 px-10 py-3 rounded-xl flex items-center gap-3 bg-gradient-to-br from-black/90 via-black/80 to-black/90 border border-white/10 text-white font-semibold text-lg shadow-[0_25px_60px_rgba(0,0,0,0.7)] disabled:opacity-50 disabled:cursor-not-allowed'
+                    >
+                    Get started
+                    </motion.button>
 
           </motion.div>
         </div>
-        <div></div>
+
+        <motion.div
+        initial={{opacity:0,x:60}}
+        animate={{opacity:1,x:0}}
+        transition={{}}
+        whileHover={{
+          y:-12,
+        rotateX:8,
+        rotateY:-8,
+        scale:1.05
+        }}
+        className='transform-gpu'
+        style={{transformStyle:"preserve-3d"}}
+        >
+        </motion.div>
       </section>
     
       {/*bottom*/}
