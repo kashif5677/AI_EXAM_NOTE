@@ -75,7 +75,7 @@ function Home() {
         </motion.div>
       </section>
     
-      {/*bottom*/}
+      bottom
       <section></section>
     </div>
   )
