@@ -73,7 +73,9 @@ function Home() {
         style={{transformStyle:"preserve-3d"}}
         >
           <div className='overflow-hidden'>
-            <img src="" alt="img" />
+            <img src="" alt="img" 
+              style={{transform:"translateZ(35px)"}}
+            />
           </div>
         </motion.div>
       </section>
