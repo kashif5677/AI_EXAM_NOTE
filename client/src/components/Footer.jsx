@@ -3,7 +3,7 @@ import motion from 'framer-motion'
 function Footer() {
   return (
     <motion.div 
-    
+        init
         className=""
     >
       
