@@ -72,6 +72,9 @@ function Home() {
         className='transform-gpu'
         style={{transformStyle:"preserve-3d"}}
         >
+          <div className='overflow-hidden'>
+            <img src="" alt="img" />
+          </div>
         </motion.div>
       </section>
     
