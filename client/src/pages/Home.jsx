@@ -3,8 +3,10 @@ import Navbar from '../components/Navbar'
 import { transform } from 'motion/react'
 import { motion } from 'motion/react'
 import Footer from '../components/Footer'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
+  const navigate=useNavigate()
   return (
     <div className='relative min-h-screen overflow-hidden bg-white text-black'>
       <Navbar/>
@@ -44,6 +46,7 @@ function Home() {
 
             </motion.p>
                     <motion.button
+                    onClick={()=>navigate('/notes')}
                       whileHover={{
                         y: -10,
                         rotateX: 8,

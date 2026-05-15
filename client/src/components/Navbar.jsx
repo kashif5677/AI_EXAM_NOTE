@@ -81,7 +81,7 @@ function Navbar() {
                         <h4 className='font-semibold mb-2'>Buy Credits</h4>
                         <p className=''>Use credits to geneate AI Notes,diagram & PDFs</p>
                         <button 
-                        onClick={()=>setShowCredits(false)}
+                        onClick={()=>{setShowCredits(false);navigate("/pricing")}}
                         className='w-full py-2 rounded-lg bg-gradient-to-br from-white to-gray-200 text-black font-semibold hover:opacity-90'>Buy More credits</button>
                     </motion.div>
                     }
@@ -114,7 +114,7 @@ function Navbar() {
                      className='absolute right-0 mt-4 w-64 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 
                      shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
                      >
-                        <MenuItem text="History" onClick={()=>setShowProfile(false)}/>
+                        <MenuItem text="History" onClick={()=>{setShowProfile(false);navigate("/history")}}/>
                         <div className='h-px bg-white/10 mx-3'/>
                         <MenuItem text="sign out" red onClick={handleSignOut}/>
 
