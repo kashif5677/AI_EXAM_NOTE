@@ -1,6 +1,25 @@
 import React from 'react'
 import {motion} from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/userSlice'
+import { serverUrl } from '../App'
+import axios from 'axios'
+
+
+
 function Footer() {
+    const naviagte=useNavigate()
+    const dispatch=useDispatch()
+    const handleSignOut=async()=>{
+        try{
+            await axios.get(serverUrl+"/api/auth/logout",{withCredentials:true})
+            dispatch(setUserData(null))
+            navigate("/auth")
+        }catch(err){
+            console.log(err)
+        }
+    }
   return (
     <motion.div 
         initial={{y:15,opacity:0}}
@@ -41,16 +60,38 @@ function Footer() {
                 </p>
             </motion.div>
             <div className='text-center'>
-                <ul className='space-y-2 text-sm'>
-                    <li className='text-gray-300 hover:text-white transition-colors'>
+                <h1 className='text-sm font-semibold text-white mb-4'>Quick Links</h1>
+                <ul className='space-y-2 text-sm cursor-pointer'>
+                    <li onClick={()=>naviagte('/notes')} className='text-gray-300 hover:text-white transition-colors'>
                         Notes
                     </li>
-                    <li className='text-gray-300 hover:text-white transition-colors'>
+                    <li onClick={()=>naviagte("/history")} className='text-gray-300 hover:text-white transition-colors'>
                         History
+                    </li>
+                    <li onClick={()=>naviagte("/pricing")} className='text-gray-300 hover:text-white transition-colors'>
+                        Pricing
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h1 className='text-sm font-semibold text-white mb-4'>Support & Account</h1>
+                <ul className='space-y-2 text-sm cursor-pointer'>
+                    <li className='text-gray-300 hover:text-white transition-colors'>
+                        SignIn
+                    </li>
+                    <li onClick={handleSignOut} className='text-gray-300 hover:text-white transition-colors'>
+                        SignOut
+                    </li>
+                    <li className='text-gray-300 hover:text-white transition-colors'>
+                        mdkashifnisar@gamil.com
                     </li>
                 </ul>
             </div>
         </div>
+        <div className='my-6 h-px bg-white/10' />
+        <p className='text-center text-xs text-gray-500'>
+          ©️  {new Date().getFullYear()} ExamNotes AI. All rights reserved
+        </p>
     </motion.div>
   )
 }

@@ -13,8 +13,8 @@ function Navbar() {
     const credits=userData.credits
     const [showCredits, setShowCredits] = useState(false)
     const [showProfile, setShowProfile] = useState(false)
-    const dispatch=useDispatch()
     const navigate=useNavigate()
+    const dispatch=useDispatch()
     const handleSignOut=async()=>{
         try{
             await axios.get(serverUrl+"/api/auth/logout",{withCredentials:true})
