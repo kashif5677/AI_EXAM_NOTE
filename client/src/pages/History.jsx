@@ -1,8 +1,8 @@
 import React from 'react'
 
-// function History() {
+function History() {
   return (
-    
+
     <div>
       
     </div>
