@@ -19,7 +19,7 @@ function Notes() {
             ExamNotes AI
         </h1>
         <p className='text-sm text-gray-400 mt-1'>
-            AI-powered exam-oriented nots & revision
+            {/* AI-powered exam-oriented nots & revision */}
         </p>
 
       </motion.header>
