@@ -19,10 +19,10 @@ function Notes() {
       '>
         <div onClick={()=>navigate("/")} className='cursor-pointer'>
               <h1 className='text-2xl font-bold bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent'>
-            {/* ExamNotes AI */}
+            ExamNotes AI
         </h1>
         <p className='text-sm text-gray-400 mt-1'>
-            AI-powered exam-oriented nots & revision
+            {/* AI-powered exam-oriented nots & revision */}
         </p>
         </div>
 
