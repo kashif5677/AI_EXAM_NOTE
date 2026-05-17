@@ -11,7 +11,7 @@ function Notes() {
       transition={{duration:2}}
 
       className='mb-10 
-      rounded-2xl bg-black/80 backdrop-blur-xl 
+      // rounded-2xl bg-black/80 backdrop-blur-xl 
       border border-white/10
       px-8 py-6
       shadow-[0_20px_45px_rgba(0,0,0,0.6)] items-start
