@@ -8,7 +8,7 @@ function Notes() {
        <motion.header
       initial={{y:-15,opacity:0}}
       animate={{y:0,opacity:1}}
-      transition={{duration:2}}
+      transition={{duration:1.5}}
 
       className='mb-10 
       rounded-2xl bg-black/80 backdrop-blur-xl 
@@ -24,6 +24,9 @@ function Notes() {
         <p className='text-sm text-gray-400 mt-1'>
             AI-powered exam-oriented notes & revision
         </p>
+        </div>
+        <div>
+          <button></button>
         </div>
 
       </motion.header>
