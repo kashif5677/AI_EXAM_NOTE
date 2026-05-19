@@ -1,8 +1,9 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, scale } from 'framer-motion'
 import { useState } from 'react'
 
-function TopicForm() {
+
+function TopicForm({setResult,setLoading,loading,setError}) {
     const [topic,setTopic]=useState("");
     const [classlevel,setClassLevel]=useState("");
     const [examType,setExamType]=useState("");
@@ -25,7 +26,7 @@ function TopicForm() {
         text-white
     '>
         <input type="text"
-            className='w-full p-3 rounded-xl bg-white/10 backdrop-blur-lg
+            className='w-full p-2 rounded-xl bg-white/10 backdrop-blur-lg
                 border border-white/20  placeholder-gray-400 text-white 
                 focus:outline-none focus:ring-2 focus:ring-white/30
             '
@@ -34,7 +35,7 @@ function TopicForm() {
             value={topic}
         />
         <input type="text"
-            className='w-full p-3 rounded-xl bg-white/10 backdrop-blur-lg
+            className='w-full p-1 rounded-xl bg-white/10 backdrop-blur-lg
                 border border-white/20  placeholder-gray-400 text-white 
                 focus:outline-none focus:ring-2 focus:ring-white/30
             '
@@ -43,7 +44,7 @@ function TopicForm() {
             value={classlevel}
         />
         <input type="text"
-            className='w-full p-3 rounded-xl bg-white/10 backdrop-blur-lg
+            className='w-full p-1 rounded-xl bg-white/10 backdrop-blur-lg
                 border border-white/20 placeholder-gray-400 text-white 
                 focus:outline-none focus:ring-2 focus:ring-white/30
             '
@@ -51,6 +52,38 @@ function TopicForm() {
             onChange={(e)=>setExamType(e.target.value)}
             value={examType}
         />
+        <div className='flex flex-col md:flex-row gap-6'>
+            <Toggle label="RevisionMode" checked={revisionMode} onChange={()=>setRevisionMode(!revisionMode)}/>
+            <Toggle
+                label="Include Diagram"
+                checked={includeDiagram}
+                onChange={()=>setIncludeDiagram(!includeDiagram)}
+            />
+            <Toggle
+                label="Include Charts"
+                checked={includeChart}
+                onChange={()=>setIncludeChart(!includeChart)}
+            />
+                </div>
+
+                <motion.button 
+                whileHover={!loading ? {scale:1.02}:{}}
+                whileTap={!loading ? {scale:0.95}:{}}
+                className={
+                    `w-full mt-4 
+                    py-3 rounded-full
+                    font-semibold
+                    flex items-center justify-center gap-3
+                    transition
+                    ${
+                        loading 
+                        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+                        : "bg-gradient-to-br from-white to-gray-200 text-black shadow-[0_15px_35px_rgba(0,0,0,4)]"
+                    }`
+                }>
+                    {loading ? "Generating..." : "Generate Notes"}
+
+                </motion.button>
     </motion.div>
   )
 }
@@ -59,7 +92,7 @@ function TopicForm() {
 function Toggle({label,checked,onChange}){
     return(
         <div className='flex items-center gap-4 cursor-pointer select-none'
-            onChange={onChange}
+            onClick={onChange}
         >
             <motion.div
             animate={{
@@ -86,9 +119,10 @@ function Toggle({label,checked,onChange}){
                         : "0.25rem"
                     }}
                 >
-                    <span className={`text-sm transition-colors ${checked ? "text-green-300" : "text-gary-300"}`}>{label}</span>
                 </motion.div>
+        
             </motion.div>
+                        <span className={`text-sm transition-colors ${checked ? "text-green-300" : "text-gary-300"}`}>{label}</span>
         </div>
     )
 }
