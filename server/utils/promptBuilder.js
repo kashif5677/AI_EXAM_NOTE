@@ -15,7 +15,7 @@ You are a STRICT JSON generator for an exam preparation system.
 - INVALID JSON will cause system failure
 - Use ONLY double quotes "
 - NO comments, NO trailing commas
-- Escape line breaks using \\n
+- Escape line breaks using \\n 
 - Do NOT use emojis inside text values
 
 TASK:
