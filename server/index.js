@@ -15,6 +15,12 @@ dotenv.config()
 
 
 const app = express()
+// Add COOP headers BEFORE other middleware
+app.use((req, res, next) => {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+    res.setHeader('Cross-Origin-Embedder-Policy', 'unsafe-none');
+    next();
+});
 
 app.post(
     "/api/credits/webhook",
@@ -24,7 +30,7 @@ app.post(
 
 app.use(cors(
     {
-        origin: "https://ai-exam-note-client.onrender.com",
+        origin: ["http://localhost:5173", "https://ai-exam-note-client.onrender.com"],
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     }
@@ -34,7 +40,7 @@ app.use(cors(
 
 app.use(express.json())
 app.use(cookieParser())
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 app.get("/", (req, res) => {
     res.json({ message: "ExamNotes AI Backend Running 🚀" })
 
