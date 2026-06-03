@@ -9,7 +9,7 @@ import Notes from './pages/Notes'
 import Pricing from './pages/Pricing'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentFailed from './pages/PaymentFailed'
-export const serverUrl ="https://ai-exam-note-server.onrender.com"
+export const serverUrl =""
 
 function App() {
   const dispatch = useDispatch()

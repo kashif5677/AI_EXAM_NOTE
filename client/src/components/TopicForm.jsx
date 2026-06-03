@@ -30,7 +30,7 @@ function TopicForm({ setResult, setLoading, loading, setError }) {
         revisionMode,
         includeDiagram,
         includeChart})
-        setResult(result.data)
+        setResult(result?.data || null)
         setLoading(false)
         setClassLevel("")
         setTopic("")
